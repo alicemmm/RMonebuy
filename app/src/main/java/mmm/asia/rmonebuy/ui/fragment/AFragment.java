@@ -1,4 +1,4 @@
-package mmm.asia.rmonebuy.fragment;
+package mmm.asia.rmonebuy.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
