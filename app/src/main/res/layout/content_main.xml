@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_main"
@@ -13,13 +13,14 @@
     <FrameLayout
         android:id="@+id/main_content_fl"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="wrap_content" />
 
-    <me.majiajie.pagerbottomtabstrip.PagerBottomTabLayout
-        android:id="@+id/main_pager_bottom_tab_layout"
+    <mmm.asia.rmonebuy.ui.view.bottomNavigation.BottomNavigationView
+        android:id="@+id/main_bottom_navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:elevation="8dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-</LinearLayout>
+</RelativeLayout>
