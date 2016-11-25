@@ -6,6 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.avos.avoscloud.AVObject;
+
 import mmm.asia.rmonebuy.R;
 import mmm.asia.rmonebuy.adapter.MainFragmentAdapter;
 import mmm.asia.rmonebuy.ui.view.bottomNavigation.BottomNavigationView;
@@ -26,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.main_bottom_navigation_view);
 
         initView();
+
+        testCloud();
+    }
+
+    private void testCloud() {
+        AVObject testObject = new AVObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
     }
 
     private void initView() {
