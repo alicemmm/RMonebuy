@@ -8,6 +8,7 @@ import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -373,8 +374,10 @@ public class BottomNavigationView extends RelativeLayout {
         if (mViewPager != null)
             mViewPager.setCurrentItem(itemIndex, viewPagerSlide);
 
-        if (onBottomNavigationItemClickListener != null)
+        if (onBottomNavigationItemClickListener != null && currentItem != itemIndex) {
             onBottomNavigationItemClickListener.onNavigationItemClick(itemIndex);
+        }
+
         currentItem = itemIndex;
     }
 
@@ -388,13 +391,54 @@ public class BottomNavigationView extends RelativeLayout {
 
     public void setUpWithViewPager(ViewPager pager, int[] colorResources, int[] imageResources) {
         this.mViewPager = pager;
-        if (pager.getAdapter().getCount() != colorResources.length ||
-                pager.getAdapter().getCount() != imageResources.length) {
+        PagerAdapter adapter = pager.getAdapter();
+        if (adapter == null) {
             return;
         }
 
-        for (int i = 0; i < pager.getAdapter().getCount(); i++)
-            addTab(new BottomNavigationItem(pager.getAdapter().getPageTitle(i).toString(), colorResources[i], imageResources[i]));
+        if (adapter.getCount() != colorResources.length ||
+                adapter.getCount() != imageResources.length) {
+            return;
+        }
+
+        for (int i = 0; i < adapter.getCount(); i++) {
+            String title = (String) pager.getAdapter().getPageTitle(i);
+            addTab(title, colorResources[i], imageResources[i]);
+        }
+    }
+
+    public void setUpWithViewPager(ViewPager pager, String[] title, int[] colorResources, int[] imageResources) {
+        this.mViewPager = pager;
+        PagerAdapter adapter = pager.getAdapter();
+        if (adapter == null) {
+            return;
+        }
+
+        if (adapter.getCount() != colorResources.length ||
+                adapter.getCount() != imageResources.length) {
+            return;
+        }
+
+        for (int i = 0; i < adapter.getCount(); i++) {
+            addTab(title[i], colorResources[i], imageResources[i]);
+        }
+    }
+
+    public void setUpWithViewPager(ViewPager pager, int[] titleResource, int[] colorResources, int[] imageResources) {
+        this.mViewPager = pager;
+        PagerAdapter adapter = pager.getAdapter();
+        if (adapter == null) {
+            return;
+        }
+
+        if (adapter.getCount() != colorResources.length ||
+                adapter.getCount() != imageResources.length) {
+            return;
+        }
+
+        for (int i = 0; i < adapter.getCount(); i++) {
+            addTab(titleResource[i], colorResources[i], imageResources[i]);
+        }
     }
 
     /**
@@ -406,7 +450,7 @@ public class BottomNavigationView extends RelativeLayout {
         bottomNavigationItems.add(item);
     }
 
-    public void addTab(String tabString, int colorResource ,int imgResource){
+    public void addTab(String tabString, int colorResource, int imgResource) {
         BottomNavigationItem item = new BottomNavigationItem.Builder().setTitle(tabString)
                 .setColor(colorResource)
                 .setImageResource(imgResource)
@@ -415,7 +459,7 @@ public class BottomNavigationView extends RelativeLayout {
         addTab(item);
     }
 
-    public void addTab(int tabResource, int colorResource ,int imgResource){
+    public void addTab(int tabResource, int colorResource, int imgResource) {
         BottomNavigationItem item = new BottomNavigationItem.Builder()
                 .setTitle(context.getResources().getString(tabResource))
                 .setColor(colorResource)

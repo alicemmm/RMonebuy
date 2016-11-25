@@ -10,18 +10,18 @@ import android.widget.TextView;
 import mmm.asia.rmonebuy.R;
 import mmm.asia.rmonebuy.base.BaseFragment;
 
-public class AFragment extends BaseFragment {
-    public static final String TAG = AFragment.class.getSimpleName();
+public class BFragment extends BaseFragment {
+    public static final String TAG = BFragment.class.getSimpleName();
 
     private String argument;
 
     private TextView textView;
 
-    public AFragment() {
+    public BFragment() {
     }
 
-    public static AFragment getInstance(String argument) {
-        AFragment fragment = new AFragment();
+    public static BFragment getInstance(String argument) {
+        BFragment fragment = new BFragment();
 
         Bundle args = new Bundle();
         args.putString("argument", argument);
@@ -42,8 +42,8 @@ public class AFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_a, container, false);
-        textView = (TextView) view.findViewById(R.id.fragment_a_title_tv);
+        View view = inflater.inflate(R.layout.fragment_b, container, false);
+        textView = (TextView) view.findViewById(R.id.fragment_b_title_tv);
         textView.setText(argument);
 
         return view;

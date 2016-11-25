@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">RMonebuy</string>
     <string name="action_settings">Settings</string>
+
+    <string name="main_activity_tab_a">Main</string>
+    <string name="main_activity_tab_b">Gift</string>
+    <string name="main_activity_tab_c">Like</string>
+    <string name="main_activity_tab_d">My</string>
 </resources>
