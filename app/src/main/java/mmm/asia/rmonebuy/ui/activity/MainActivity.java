@@ -1,6 +1,5 @@
 package mmm.asia.rmonebuy.ui.activity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -15,8 +14,6 @@ import mmm.asia.rmonebuy.ui.view.bottomNavigation.OnBottomNavigationItemClickLis
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private Context context;
-
     private ViewPager viewPager;
     private BottomNavigationView bottomNavigationView;
 
@@ -24,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        context = this;
 
         viewPager = (ViewPager) findViewById(R.id.main_content_vp);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.main_bottom_navigation_view);

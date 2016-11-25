@@ -49,4 +49,18 @@ public class AFragment extends BaseFragment {
         return view;
     }
 
+    @Override
+    public void onViewFirstAppear() {
+        super.onViewFirstAppear();
+    }
+
+    @Override
+    public void onViewAppear() {
+        super.onViewAppear();
+    }
+
+    @Override
+    public void onViewDisappear() {
+        super.onViewDisappear();
+    }
 }
