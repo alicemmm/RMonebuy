@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView.isWithText(true);
         bottomNavigationView.isColoredBackground(true);
+        bottomNavigationView.disableShadow();
         bottomNavigationView.setTextActiveSize(getResources().getDimension(R.dimen.text_active));
         bottomNavigationView.setTextInactiveSize(getResources().getDimension(R.dimen.text_inactive));
         bottomNavigationView.setItemActiveColorWithoutColoredBackground(ContextCompat.getColor(this, R.color.white));
