@@ -49,6 +49,7 @@ public class BottomNavigationView extends RelativeLayout {
     private List<View> viewList = new ArrayList<>();
 
     private int itemActiveColorWithoutColoredBackground = -1;
+    private int backgroundColor = -1;
 
     private static int currentItem = 0;
 
@@ -56,7 +57,7 @@ public class BottomNavigationView extends RelativeLayout {
 
     private int shadowHeight;
 
-    private int itemInactiveColor;
+    private int itemInactiveColor = -1;
 
     private int itemWidth;
 
@@ -105,6 +106,7 @@ public class BottomNavigationView extends RelativeLayout {
             TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.BottomNavigationView);
             withText = array.getBoolean(R.styleable.BottomNavigationView_bnv_with_text, true);
             coloredBackground = array.getBoolean(R.styleable.BottomNavigationView_bnv_colored_background, true);
+            backgroundColor = array.getInt(R.styleable.BottomNavigationView_bnv_background_color, -1);
             disableShadow = array.getBoolean(R.styleable.BottomNavigationView_bnv_shadow, false);
             isTablet = array.getBoolean(R.styleable.BottomNavigationView_bnv_tablet, false);
             viewPagerSlide = array.getBoolean(R.styleable.BottomNavigationView_bnv_viewpager_slide, true);
@@ -126,14 +128,23 @@ public class BottomNavigationView extends RelativeLayout {
         navigationWidth = BottomNavigationUtils.getActionbarSize(context);
         ViewGroup.LayoutParams params = getLayoutParams();
         if (coloredBackground) {
-            itemActiveColorWithoutColoredBackground = ContextCompat.getColor(context, R.color.colorActive);
-            itemInactiveColor = ContextCompat.getColor(context, R.color.colorInactive);
+            if (itemActiveColorWithoutColoredBackground == -1) {
+                itemActiveColorWithoutColoredBackground = ContextCompat.getColor(context, R.color.colorActive);
+            }
+
+            if (itemInactiveColor == -1) {
+                itemInactiveColor = ContextCompat.getColor(context, R.color.colorInactive);
+            }
             shadowHeight = (int) getResources().getDimension(R.dimen.bottom_navigation_shadow_height);
         } else {
-            if (itemActiveColorWithoutColoredBackground == -1)
+            if (itemActiveColorWithoutColoredBackground == -1) {
                 itemActiveColorWithoutColoredBackground = ContextCompat.getColor(context,
                         R.color.itemActiveColorWithoutColoredBackground);
-            itemInactiveColor = ContextCompat.getColor(context, R.color.withoutColoredBackground);
+            }
+
+            if (itemInactiveColor == -1) {
+                itemInactiveColor = ContextCompat.getColor(context, R.color.withoutColoredBackground);
+            }
             shadowHeight = (int) getResources().getDimension(R.dimen.bottom_navigation_shadow_height_without_colored_background);
         }
         if (isTablet) {
@@ -217,7 +228,7 @@ public class BottomNavigationView extends RelativeLayout {
             final int index = i;
 
             if (!coloredBackground)
-                bottomNavigationItems.get(i).setColor(white);
+                bottomNavigationItems.get(i).setColor(backgroundColor == -1 ? white : backgroundColor);
 
             int textActivePaddingTop = (int) context.getResources().getDimension(R.dimen.bottom_navigation_padding_top_active);
             int viewInactivePaddingTop = (int) context.getResources().getDimension(R.dimen.bottom_navigation_padding_top_inactive);
@@ -494,6 +505,10 @@ public class BottomNavigationView extends RelativeLayout {
         this.itemActiveColorWithoutColoredBackground = itemActiveColorWithoutColoredBackground;
     }
 
+    public void setItemInactiveColor(int itemInactiveColor) {
+        this.itemInactiveColor = itemInactiveColor;
+    }
+
     /**
      * With this BottomNavigation background will be white
      *
@@ -501,6 +516,10 @@ public class BottomNavigationView extends RelativeLayout {
      */
     public void isColoredBackground(boolean coloredBackground) {
         this.coloredBackground = coloredBackground;
+    }
+
+    public void setBgColor(int color) {
+        this.backgroundColor = color;
     }
 
     /**
