@@ -3,8 +3,6 @@ package mmm.asia.rmonebuy.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
 
 import mmm.asia.rmonebuy.ui.fragment.AFragment;
 import mmm.asia.rmonebuy.ui.fragment.BFragment;
