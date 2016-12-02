@@ -10,6 +10,7 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -234,7 +235,7 @@ public class BottomNavigationView extends RelativeLayout {
             int viewInactivePaddingTop = (int) context.getResources().getDimension(R.dimen.bottom_navigation_padding_top_inactive);
             int viewInactivePaddingTopWithoutText = (int) context.getResources().getDimension(R.dimen.bottom_navigation_padding_top_inactive_without_text);
             final View view = inflater.inflate(R.layout.bottom_navigation, this, false);
-            ImageView icon = (ImageView) view.findViewById(R.id.bottom_navigation_item_icon);
+            AppCompatImageView icon = (AppCompatImageView) view.findViewById(R.id.bottom_navigation_item_icon);
             TextView title = (TextView) view.findViewById(R.id.bottom_navigation_item_title);
 
             if (isCustomFont)
@@ -259,8 +260,8 @@ public class BottomNavigationView extends RelativeLayout {
             if (i == currentItem) {
                 container.setBackgroundColor(bottomNavigationItems.get(index).getColor());
                 title.setTextColor(itemActiveColorWithoutColoredBackground);
-                icon.setScaleX((float) 1.1);
-                icon.setScaleY((float) 1.1);
+                icon.setScaleX((float) 1.2);
+                icon.setScaleY((float) 1.2);
             }
 
             if (isTablet)
@@ -302,7 +303,7 @@ public class BottomNavigationView extends RelativeLayout {
             if (i == itemIndex) {
                 View view = viewList.get(itemIndex).findViewById(R.id.bottom_navigation_container);
                 final TextView title = (TextView) view.findViewById(R.id.bottom_navigation_item_title);
-                final ImageView icon = (ImageView) view.findViewById(R.id.bottom_navigation_item_icon);
+                final AppCompatImageView icon = (AppCompatImageView) view.findViewById(R.id.bottom_navigation_item_icon);
                 BottomNavigationUtils.changeTextColor(title, itemInactiveColor, itemActiveColorWithoutColoredBackground);
                 BottomNavigationUtils.changeTextSize(title, withText ? textInactiveSize : 0, textActiveSize);
 
@@ -322,8 +323,8 @@ public class BottomNavigationView extends RelativeLayout {
 
                 icon.animate()
                         .setDuration(150)
-                        .scaleX((float) 1.1)
-                        .scaleY((float) 1.1)
+                        .scaleX((float) 1.2)
+                        .scaleY((float) 1.2)
                         .start();
 
                 if (isTablet) {
@@ -376,8 +377,8 @@ public class BottomNavigationView extends RelativeLayout {
 
                 icon.animate()
                         .setDuration(150)
-                        .scaleX((float) 0.9)
-                        .scaleY((float) 0.9)
+                        .scaleX((float) 1.0)
+                        .scaleY((float) 1.0)
                         .start();
             }
         }

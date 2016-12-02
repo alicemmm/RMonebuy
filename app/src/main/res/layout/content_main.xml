@@ -13,7 +13,14 @@
         android:id="@+id/main_content_vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/main_bottom_navigation_view" />
+        android:layout_above="@+id/main_small_line_view" />
+
+    <View
+        android:id="@+id/main_small_line_view"
+        android:layout_above="@+id/main_bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/small_line_height"
+        android:background="@color/split_line_dark_color"/>
 
     <mmm.asia.rmonebuy.ui.view.bottomNavigation.BottomNavigationView
         android:id="@+id/main_bottom_navigation_view"

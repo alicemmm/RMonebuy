@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        int[] image = {R.drawable.ic_account_balance_black_24dp, R.drawable.ic_redeem_black_24dp,
+        int[] image = {R.drawable.ic_home_black_24dp, R.drawable.ic_redeem_black_24dp,
                 R.drawable.ic_favorite_black_24dp, R.drawable.ic_person_black_24dp};
-        int[] color = {ContextCompat.getColor(this, R.color.firstColor), ContextCompat.getColor(this, R.color.secondColor),
-                ContextCompat.getColor(this, R.color.thirdColor), ContextCompat.getColor(this, R.color.fourthColor)};
+//        int[] color = {ContextCompat.getColor(this, R.color.firstColor), ContextCompat.getColor(this, R.color.secondColor),
+//                ContextCompat.getColor(this, R.color.thirdColor), ContextCompat.getColor(this, R.color.fourthColor)};
 
-//        int[] color = {ContextCompat.getColor(this, R.color.colorPrimary), ContextCompat.getColor(this, R.color.colorPrimary),
-//                ContextCompat.getColor(this, R.color.colorPrimary), ContextCompat.getColor(this, R.color.colorPrimary)};
+        int[] color = {ContextCompat.getColor(this, R.color.default_bg_color), ContextCompat.getColor(this, R.color.default_bg_color),
+                ContextCompat.getColor(this, R.color.default_bg_color), ContextCompat.getColor(this, R.color.default_bg_color)};
 
         int[] titles = {R.string.main_activity_tab_a, R.string.main_activity_tab_b,
                 R.string.main_activity_tab_c, R.string.main_activity_tab_d};
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.disableShadow();
         bottomNavigationView.setTextActiveSize(getResources().getDimension(R.dimen.text_active));
         bottomNavigationView.setTextInactiveSize(getResources().getDimension(R.dimen.text_inactive));
-        bottomNavigationView.setItemActiveColorWithoutColoredBackground(ContextCompat.getColor(this, R.color.white));
+        bottomNavigationView.setItemActiveColorWithoutColoredBackground(ContextCompat.getColor(this, R.color.red));
         bottomNavigationView.setItemInactiveColor(ContextCompat.getColor(this, R.color.colorInactive));
 
         viewPager.setAdapter(new MainFragmentAdapter(getSupportFragmentManager()));

@@ -23,7 +23,9 @@
     <dimen name="bottom_navigation_text_size_inactive">12sp</dimen>
     <!--bottom_navigation end-->
 
-    <dimen name="text_inactive">10dp</dimen>
-    <dimen name="text_active">12dp</dimen>
+    <dimen name="text_inactive">12dp</dimen>
+    <dimen name="text_active">14dp</dimen>
+
+    <dimen name="small_line_height">1px</dimen>
 
 </resources>

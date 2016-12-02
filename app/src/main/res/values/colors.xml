@@ -4,6 +4,39 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="window_background">#FFF5F5F5</color>
+    <color name="window_focused_background">#FFE7E7E7</color>
+    <color name="window_focused_translucent_background">#80E7E7E7</color>
+    <color name="window_translucent_dark_background">#80000000</color>
+    <color name="window_light_background">#FFFFFFFF</color>
+
+    <color name="list_header_background">#EAEAEA</color>
+
+    <color name="split_line_dark_color">#C4C4C4</color>
+    <color name="split_line_color">#D7D7D7</color>
+    <color name="split_line_light_color">#FFFFFF</color>
+
+    <color name="title_color">#3B3B3B</color>
+    <color name="title_intense_color">#6C6C6C</color>
+    <color name="title_fancy_color">#737373</color>
+    <color name="title_faint_color">#AEAEAE</color>
+    <color name="title_light_color">#FFFFFF</color>
+
+    <color name="subtitle_dark_color">#737373</color>
+    <color name="subtitle_color">#9E9E9E</color>
+
+    <color name="content_dark_color">#3B3B3B</color>
+    <color name="content_intense_color">#737373</color>
+    <color name="content_color">#787878</color>
+
+    <color name="link_color">#007AFF</color>
+    <color name="warning_color">#FF0000</color>
+
+    <!--line-->
+
+    <color name="default_bg_color">#f2f2f2</color>
+    <color name="red">#ff0000</color>
+
     <color name="firstColor">#00BCD4</color>
     <color name="secondColor">#E91E63</color>
     <color name="thirdColor">#FF5722</color>
@@ -11,7 +44,7 @@
 
     <color name="itemActiveColorWithoutColoredBackground">#2196F3</color>
     <color name="colorActive">#FFFFFF</color>
-    <color name="colorInactive">#e7e6e7</color>
+    <color name="colorInactive">@color/subtitle_dark_color</color>
     <color name="withoutColoredBackground">#757575</color>
     <color name="white">#ffffff</color>
 
