@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.main_bottom_navigation_view);
 
         initView();
-
-        testCloud();
     }
 
     private void testCloud() {
@@ -46,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         int[] image = {R.drawable.ic_home_black_24dp, R.drawable.ic_redeem_black_24dp,
                 R.drawable.ic_favorite_black_24dp, R.drawable.ic_person_black_24dp};
-//        int[] color = {ContextCompat.getColor(this, R.color.firstColor), ContextCompat.getColor(this, R.color.secondColor),
-//                ContextCompat.getColor(this, R.color.thirdColor), ContextCompat.getColor(this, R.color.fourthColor)};
 
         int[] color = {ContextCompat.getColor(this, R.color.default_bg_color), ContextCompat.getColor(this, R.color.default_bg_color),
                 ContextCompat.getColor(this, R.color.default_bg_color), ContextCompat.getColor(this, R.color.default_bg_color)};

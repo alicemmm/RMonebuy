@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation_container"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/bottom_navigation_height"
+    android:background="?selectableItemBackgroundBorderless"
+    android:minWidth="@dimen/bottom_navigation_min_width"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/bottom_navigation_padding_left"
+    android:paddingRight="@dimen/bottom_navigation_padding_right">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/bottom_navigation_item_icon"
+        android:layout_width="@dimen/bottom_navigation_icon"
+        android:layout_height="@dimen/bottom_navigation_icon"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:scaleX="1.0"
+        android:scaleY="1.0"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/bottom_navigation_point_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_toEndOf="@+id/bottom_navigation_item_icon"
+        android:layout_toRightOf="@+id/bottom_navigation_item_icon"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/red_point" />
+
+    <TextView
+        android:id="@+id/bottom_navigation_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bottom_navigation_item_icon"
+        android:layout_gravity="bottom|center_horizontal"
+        android:gravity="center"
+        android:lines="1"
+        android:textSize="@dimen/bottom_navigation_text_size_inactive"
+        tools:text="Label One" />
+
+</RelativeLayout>

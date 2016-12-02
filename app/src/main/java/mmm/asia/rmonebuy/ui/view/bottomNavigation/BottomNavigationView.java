@@ -234,7 +234,7 @@ public class BottomNavigationView extends RelativeLayout {
             int textActivePaddingTop = (int) context.getResources().getDimension(R.dimen.bottom_navigation_padding_top_active);
             int viewInactivePaddingTop = (int) context.getResources().getDimension(R.dimen.bottom_navigation_padding_top_inactive);
             int viewInactivePaddingTopWithoutText = (int) context.getResources().getDimension(R.dimen.bottom_navigation_padding_top_inactive_without_text);
-            final View view = inflater.inflate(R.layout.bottom_navigation, this, false);
+            final View view = inflater.inflate(R.layout.bottom_navigation_item, this, false);
             AppCompatImageView icon = (AppCompatImageView) view.findViewById(R.id.bottom_navigation_item_icon);
             TextView title = (TextView) view.findViewById(R.id.bottom_navigation_item_title);
 
@@ -289,7 +289,6 @@ public class BottomNavigationView extends RelativeLayout {
     }
 
     private void onBottomNavigationItemClick(final int itemIndex) {
-
         if (currentItem == itemIndex) {
             return;
         }
