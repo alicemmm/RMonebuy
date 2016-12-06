@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        bottomBar.getItem(3).setUnreadCount(10);
+//        bottomBar.getItem(3).setUnreadCount(8);
 
     }
 
