@@ -105,9 +105,6 @@ public class BottomBar extends LinearLayout {
         return mCurrentPosition;
     }
 
-    /**
-     * 获取 Tab
-     */
     public BottomBarTab getItem(int index) {
         if (mTabs.size() < index) return null;
         return mTabs.get(index);

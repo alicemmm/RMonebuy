@@ -23,12 +23,12 @@ import mmm.asia.rmonebuy.R;
  */
 
 public class BottomBarTab extends FrameLayout {
-    private ImageView mIcon;
-    private TextView mTvTitle;
-    private Context mContext;
-    private int mTabPosition = -1;
+    private ImageView icon;
+    private TextView tvTitle;
+    private Context context;
+    private int tabPosition = -1;
 
-    private TextView mTvUnreadCount;
+    private TextView tvUnreadCount;
 
     public BottomBarTab(Context context, @DrawableRes int icon, CharSequence title) {
         this(context, null, icon, title);
@@ -44,7 +44,7 @@ public class BottomBarTab extends FrameLayout {
     }
 
     private void init(Context context, int icon, CharSequence title) {
-        mContext = context;
+        this.context = context;
         TypedArray typedArray = context.obtainStyledAttributes(new int[]{R.attr.selectableItemBackgroundBorderless});
         Drawable drawable = typedArray.getDrawable(0);
         setBackgroundDrawable(drawable);
@@ -57,96 +57,91 @@ public class BottomBarTab extends FrameLayout {
         paramsContainer.gravity = Gravity.CENTER;
         lLContainer.setLayoutParams(paramsContainer);
 
-        mIcon = new ImageView(context);
+        this.icon = new ImageView(context);
         int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 27, getResources().getDisplayMetrics());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(size, size);
-        mIcon.setImageResource(icon);
-        mIcon.setLayoutParams(params);
-        mIcon.setColorFilter(ContextCompat.getColor(context, R.color.tab_unselect));
-        lLContainer.addView(mIcon);
+        this.icon.setImageResource(icon);
+        this.icon.setLayoutParams(params);
+        this.icon.setColorFilter(ContextCompat.getColor(context, R.color.tab_unselect));
+        lLContainer.addView(this.icon);
 
-        mTvTitle = new TextView(context);
-        mTvTitle.setText(title);
+        tvTitle = new TextView(context);
+        tvTitle.setText(title);
         LinearLayout.LayoutParams paramsTv = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         paramsTv.topMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
-        mTvTitle.setTextSize(10);
-        mTvTitle.setTextColor(ContextCompat.getColor(context, R.color.tab_unselect));
-        mTvTitle.setLayoutParams(paramsTv);
-        lLContainer.addView(mTvTitle);
+        tvTitle.setTextSize(10);
+        tvTitle.setTextColor(ContextCompat.getColor(context, R.color.tab_unselect));
+        tvTitle.setLayoutParams(paramsTv);
+        lLContainer.addView(tvTitle);
 
         addView(lLContainer);
 
         int min = dip2px(context, 20);
         int padding = dip2px(context, 5);
-        mTvUnreadCount = new TextView(context);
-        mTvUnreadCount.setBackgroundResource(R.drawable.bg_msg_bubble);
-        mTvUnreadCount.setMinWidth(min);
-        mTvUnreadCount.setTextColor(Color.WHITE);
-        mTvUnreadCount.setPadding(padding, 0, padding, 0);
-        mTvUnreadCount.setGravity(Gravity.CENTER);
+        tvUnreadCount = new TextView(context);
+        tvUnreadCount.setTextSize(10);
+        tvUnreadCount.setBackgroundResource(R.drawable.bg_msg_bubble);
+        tvUnreadCount.setMinWidth(min);
+        tvUnreadCount.setTextColor(Color.WHITE);
+        tvUnreadCount.setPadding(padding, 0, padding, 0);
+        tvUnreadCount.setGravity(Gravity.CENTER);
         FrameLayout.LayoutParams tvUnReadParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, min);
         tvUnReadParams.gravity = Gravity.CENTER;
         tvUnReadParams.leftMargin = dip2px(context, 17);
         tvUnReadParams.bottomMargin = dip2px(context, 14);
-        mTvUnreadCount.setLayoutParams(tvUnReadParams);
-        mTvUnreadCount.setVisibility(GONE);
+        tvUnreadCount.setLayoutParams(tvUnReadParams);
+        tvUnreadCount.setVisibility(GONE);
 
-        addView(mTvUnreadCount);
+        addView(tvUnreadCount);
     }
 
     @Override
     public void setSelected(boolean selected) {
         super.setSelected(selected);
         if (selected) {
-            mIcon.setColorFilter(ContextCompat.getColor(mContext, R.color.colorPrimary));
-            mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
+            icon.setColorFilter(ContextCompat.getColor(context, R.color.colorPrimary));
+            tvTitle.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
         } else {
-            mIcon.setColorFilter(ContextCompat.getColor(mContext, R.color.tab_unselect));
-            mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.tab_unselect));
+            icon.setColorFilter(ContextCompat.getColor(context, R.color.tab_unselect));
+            tvTitle.setTextColor(ContextCompat.getColor(context, R.color.tab_unselect));
         }
     }
 
     public void setTabPosition(int position) {
-        mTabPosition = position;
+        tabPosition = position;
         if (position == 0) {
             setSelected(true);
         }
     }
 
     public int getTabPosition() {
-        return mTabPosition;
+        return tabPosition;
     }
 
-    /**
-     * 设置未读数量
-     */
     public void setUnreadCount(int num) {
         if (num <= 0) {
-            mTvUnreadCount.setText(String.valueOf(0));
-            mTvUnreadCount.setVisibility(GONE);
+            tvUnreadCount.setText(String.valueOf(0));
+            tvUnreadCount.setVisibility(GONE);
         } else {
-            mTvUnreadCount.setVisibility(VISIBLE);
+            tvUnreadCount.setVisibility(VISIBLE);
             if (num > 99) {
-                mTvUnreadCount.setText("99+");
+                tvUnreadCount.setText("99+");
             } else {
-                mTvUnreadCount.setText(String.valueOf(num));
+                tvUnreadCount.setText(String.valueOf(num));
             }
         }
     }
 
-    /**
-     * 获取当前未读数量
-     */
     public int getUnreadCount() {
         int count = 0;
-        if (TextUtils.isEmpty(mTvUnreadCount.getText())) {
+        if (TextUtils.isEmpty(tvUnreadCount.getText())) {
             return count;
         }
-        if (mTvUnreadCount.getText().toString().equals("99+")) {
+        if (tvUnreadCount.getText().toString().equals("99+")) {
             return 99;
         }
         try {
-            count = Integer.valueOf(mTvUnreadCount.getText().toString());
+            count = Integer.valueOf(tvUnreadCount.getText().toString());
         } catch (Exception ignored) {
         }
         return count;

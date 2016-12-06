@@ -12,12 +12,20 @@
     <FrameLayout
         android:id="@+id/fl_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_small_line" />
+
+    <View
+        android:id="@+id/main_small_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/small_line_height"
+        android:layout_above="@+id/bottom_bar"
+        android:background="@color/split_line_dark_color" />
 
     <mmm.asia.rmonebuy.ui.view.bottombar.BottomBar
         android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="@dimen/common_bottom_bar_height"
         android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
