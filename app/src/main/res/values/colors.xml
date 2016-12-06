@@ -48,4 +48,7 @@
     <color name="withoutColoredBackground">#757575</color>
     <color name="white">#ffffff</color>
 
+    <color name="tab_unselect">#c9c9c9</color>
+    <color name="bg_btn">#dadada</color>
+
 </resources>

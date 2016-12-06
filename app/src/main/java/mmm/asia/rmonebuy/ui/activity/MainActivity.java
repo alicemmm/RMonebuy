@@ -1,38 +1,65 @@
 package mmm.asia.rmonebuy.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import com.avos.avoscloud.AVObject;
 
 import mmm.asia.rmonebuy.R;
-import mmm.asia.rmonebuy.adapter.MainFragmentAdapter;
-import mmm.asia.rmonebuy.ui.view.bottomNavigation.BottomNavigationView;
-import mmm.asia.rmonebuy.ui.view.bottomNavigation.OnBottomNavigationItemClickListener;
+import mmm.asia.rmonebuy.ui.fragment.AFragment;
+import mmm.asia.rmonebuy.ui.fragment.BFragment;
+import mmm.asia.rmonebuy.ui.fragment.CFragment;
+import mmm.asia.rmonebuy.ui.fragment.DFragment;
+import mmm.asia.rmonebuy.ui.view.bottombar.BottomBar;
+import mmm.asia.rmonebuy.ui.view.bottombar.BottomBarTab;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private ViewPager viewPager;
-    private BottomNavigationView bottomNavigationView;
+    private BottomBar bottomBar;
+
+    private FragmentManager fragmentManager;
+    private Fragment[] mFragments;
+
+    private AFragment fragmentA;
+    private BFragment fragmentB;
+    private CFragment fragmentC;
+    private DFragment fragmentD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fragmentManager = getSupportFragmentManager();
+        if (savedInstanceState != null) {
+            fragmentA = (AFragment) fragmentManager.findFragmentByTag("tab0");
+            fragmentB = (BFragment) fragmentManager.findFragmentByTag("tab1");
+            fragmentC = (CFragment) fragmentManager.findFragmentByTag("tab2");
+            fragmentD = (DFragment) fragmentManager.findFragmentByTag("tab3");
+        }
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        viewPager = (ViewPager) findViewById(R.id.main_content_vp);
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.main_bottom_navigation_view);
+        bottomBar = (BottomBar) findViewById(R.id.bottom_bar);
 
         initView();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
     }
 
     private void testCloud() {
@@ -42,60 +69,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        int[] image = {R.drawable.ic_home_black_24dp, R.drawable.ic_redeem_black_24dp,
-                R.drawable.ic_favorite_black_24dp, R.drawable.ic_person_black_24dp};
+        fragmentA = AFragment.getInstance("0");
+        fragmentB = BFragment.getInstance("1");
+        fragmentC = CFragment.getInstance("2");
+        fragmentD = DFragment.getInstance("3");
 
-        int[] color = {ContextCompat.getColor(this, R.color.default_bg_color), ContextCompat.getColor(this, R.color.default_bg_color),
-                ContextCompat.getColor(this, R.color.default_bg_color), ContextCompat.getColor(this, R.color.default_bg_color)};
+        mFragments = new Fragment[]{fragmentA, fragmentB, fragmentC, fragmentD};
 
-        int[] titles = {R.string.main_activity_tab_a, R.string.main_activity_tab_b,
-                R.string.main_activity_tab_c, R.string.main_activity_tab_d};
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.fl_container, fragmentA, "tab0")
+                .add(R.id.fl_container, fragmentB, "tab1")
+                .add(R.id.fl_container, fragmentC, "tab2")
+                .add(R.id.fl_container, fragmentD, "tab3")
+                .hide(fragmentB)
+                .hide(fragmentC)
+                .hide(fragmentD)
+                .show(fragmentA);
 
-        bottomNavigationView.isWithText(true);
-        bottomNavigationView.isColoredBackground(true);
-        bottomNavigationView.disableShadow();
-        bottomNavigationView.setTextActiveSize(getResources().getDimension(R.dimen.text_active));
-        bottomNavigationView.setTextInactiveSize(getResources().getDimension(R.dimen.text_inactive));
-        bottomNavigationView.setItemActiveColorWithoutColoredBackground(ContextCompat.getColor(this, R.color.red));
-        bottomNavigationView.setItemInactiveColor(ContextCompat.getColor(this, R.color.colorInactive));
+        transaction.commitAllowingStateLoss();
 
-        viewPager.setAdapter(new MainFragmentAdapter(getSupportFragmentManager()));
-        bottomNavigationView.setUpWithViewPager(viewPager, titles, color, image);
+        bottomBar.addItem(new BottomBarTab(this, R.drawable.ic_home_black_24dp, getString(R.string.main_activity_tab_a)))
+                .addItem(new BottomBarTab(this, R.drawable.ic_redeem_black_24dp, getString(R.string.main_activity_tab_b)))
+                .addItem(new BottomBarTab(this, R.drawable.ic_favorite_black_24dp, getString(R.string.main_activity_tab_c)))
+                .addItem(new BottomBarTab(this, R.drawable.ic_person_black_24dp, getString(R.string.main_activity_tab_d)));
 
-        bottomNavigationView.setOnBottomNavigationItemClickListener(new OnBottomNavigationItemClickListener() {
+        bottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override
-            public void onNavigationItemClick(int index) {
-                switch (index) {
-                    case 0:
-                        Log.e(TAG, "Record");
-                        break;
-                    case 1:
-                        Log.e(TAG, "Like");
-                        break;
-                    case 2:
-                        Log.e(TAG, "Books");
-                        break;
-                    case 3:
-                        Log.e(TAG, "GitHub");
-                        break;
+            public void onTabSelected(int position, int prePosition) {
+                FragmentTransaction ft = fragmentManager.beginTransaction();
+
+                ft.hide(mFragments[prePosition]);
+
+                if (!mFragments[position].isAdded()) {
+                    ft.add(R.id.fl_container, mFragments[position]);
                 }
-            }
-        });
 
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                ft.show(mFragments[position]);
+                ft.commitAllowingStateLoss();
             }
 
             @Override
-            public void onPageSelected(int position) {
-                bottomNavigationView.selectTab(position);
+            public void onTabUnselected(int position) {
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {
-
+            public void onTabReselected(int position) {
             }
         });
 
