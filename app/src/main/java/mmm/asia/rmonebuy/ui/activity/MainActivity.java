@@ -94,9 +94,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(int position, int prePosition) {
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-
                 ft.hide(mFragments[prePosition]);
-
                 if (!mFragments[position].isAdded()) {
                     ft.add(R.id.fl_container, mFragments[position]);
                 }

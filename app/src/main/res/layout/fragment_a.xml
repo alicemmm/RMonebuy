@@ -11,11 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <mmm.asia.rmonebuy.ui.view.StickyScrollView
+        <mmm.asia.rmonebuy.ui.view.FitNestedScrollView
             android:id="@+id/ScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            whatever:stuckShadowDrawable="@drawable/sticky_shadow_default">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -30,19 +29,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="100dip"
                     android:background="#ffffff00" />
-
-                <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="100dip"
-                    android:background="#99ff00ff"
-                    android:tag="sticky-nonconstant-hastransparancy">
-
-                    <Button
-                        android:id="@+id/mybutton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:text="hello world" />
-                </FrameLayout>
 
                 <View
                     android:layout_width="fill_parent"
@@ -122,7 +108,7 @@
 
             </LinearLayout>
 
-        </mmm.asia.rmonebuy.ui.view.StickyScrollView>
+        </mmm.asia.rmonebuy.ui.view.FitNestedScrollView>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

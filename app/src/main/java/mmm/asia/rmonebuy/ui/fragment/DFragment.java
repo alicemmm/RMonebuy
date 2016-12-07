@@ -15,8 +15,6 @@ public class DFragment extends BaseFragment {
 
     private String argument;
 
-    private TextView textView;
-
     public DFragment() {
     }
 
@@ -43,8 +41,6 @@ public class DFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_d, container, false);
-        textView = (TextView) view.findViewById(R.id.fragment_d_title_tv);
-        textView.setText(argument);
 
         return view;
     }
