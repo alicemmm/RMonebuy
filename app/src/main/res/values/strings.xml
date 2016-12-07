@@ -2,8 +2,8 @@
     <string name="app_name">RMonebuy</string>
     <string name="action_settings">Settings</string>
 
-    <string name="main_activity_tab_a">Main</string>
-    <string name="main_activity_tab_b">Gift</string>
-    <string name="main_activity_tab_c">Like</string>
-    <string name="main_activity_tab_d">My</string>
+    <string name="main_activity_tab_a">主页</string>
+    <string name="main_activity_tab_b">精选</string>
+    <string name="main_activity_tab_c">轻松购</string>
+    <string name="main_activity_tab_d">我的</string>
 </resources>

@@ -9,6 +9,7 @@
     <dimen name="text_inactive">12dp</dimen>
     <dimen name="text_active">14dp</dimen>
 
-    <dimen name="small_line_height">1px</dimen>
+    <dimen name="small_line_height_px">1px</dimen>
+    <dimen name="small_line_height_dp">1dp</dimen>
 
 </resources>

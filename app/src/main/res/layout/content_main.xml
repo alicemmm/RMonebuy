@@ -18,7 +18,7 @@
     <View
         android:id="@+id/main_small_line"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/small_line_height"
+        android:layout_height="@dimen/small_line_height_dp"
         android:layout_above="@+id/bottom_bar"
         android:background="@color/split_line_dark_color" />
 

@@ -1,7 +1,10 @@
 package mmm.asia.rmonebuy.ui.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,10 @@ public class AFragment extends BaseFragment {
     public static final String TAG = AFragment.class.getSimpleName();
 
     private String argument;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+    private boolean isRefresh = false;
 
     public AFragment() {
     }
@@ -41,8 +48,37 @@ public class AFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_a, container, false);
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+
+        initView();
 
         return view;
+    }
+
+    private void initView() {
+        swipeRefreshLayout.setColorSchemeColors(Color.BLUE,
+                Color.GREEN,
+                Color.YELLOW,
+                Color.RED);
+        swipeRefreshLayout.setDistanceToTriggerSync(300);
+        swipeRefreshLayout.setProgressBackgroundColorSchemeColor(Color.WHITE);
+        swipeRefreshLayout.setSize(SwipeRefreshLayout.DEFAULT);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (!isRefresh) {
+                    isRefresh = true;
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+                            swipeRefreshLayout.setRefreshing(false);
+                            isRefresh = false;
+                        }
+                    }, 4000);
+                }
+            }
+        });
+
     }
 
     @Override

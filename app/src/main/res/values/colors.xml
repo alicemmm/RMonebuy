@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#fb4059</color>
+    <color name="colorPrimaryDark">#fb4059</color>
     <color name="colorAccent">#FF4081</color>
 
     <color name="window_background">#FFF5F5F5</color>
@@ -48,7 +48,7 @@
     <color name="withoutColoredBackground">#757575</color>
     <color name="white">#ffffff</color>
 
-    <color name="tab_unselect">#c9c9c9</color>
-    <color name="bg_btn">#dadada</color>
+    <color name="tab_unselect">#929292</color>
+    <color name="bg_btn">#f7f7f7</color>
 
 </resources>
