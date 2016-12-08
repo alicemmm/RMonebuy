@@ -28,7 +28,10 @@ public class RmApplication extends Application {
 
         refWatcher = LeakCanary.install(this);
 
+        //AppId, AppKey
         AVOSCloud.initialize(this, Config.cloudAppID, Config.cloudAppKey);
+        // US point
+//        AVOSCloud.useAVCloudUS();
     }
 
     public static Context getContext() {
