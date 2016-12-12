@@ -3,7 +3,6 @@ package mmm.asia.rmonebuy.ui.view;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -43,7 +42,6 @@ public class StickyViewPager extends ViewPager {
             setMeasuredDimension(getMeasuredWidth(), measureHeight(heightMeasureSpec, maxHeightView));
         }
     }
-
 
     /**
      * Determines the height of this view

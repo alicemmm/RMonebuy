@@ -45,6 +45,9 @@ dependencies {
     compile ('cn.leancloud.android:avoscloud-sdk:v3.+')
     compile ('cn.leancloud.android:avoscloud-statistics:v3.+')
 
+    // 推送与实时聊天需要的包
+    compile ('cn.leancloud.android:avoscloud-push:v3.+@aar'){transitive = true}
+
     // avoscloud-sns：LeanCloud 第三方登录包
     compile ('cn.leancloud.android:avoscloud-sns:v3.+@aar')
     compile ('cn.leancloud.android:qq-sdk:1.6.1-leancloud')

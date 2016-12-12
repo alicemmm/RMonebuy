@@ -5,14 +5,18 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.PushService;
+import com.avos.avoscloud.SaveCallback;
 
 import mmm.asia.rmonebuy.R;
+import mmm.asia.rmonebuy.base.BaseActivity;
 import mmm.asia.rmonebuy.ui.fragment.AFragment;
 import mmm.asia.rmonebuy.ui.fragment.BFragment;
 import mmm.asia.rmonebuy.ui.fragment.CFragment;
@@ -20,7 +24,7 @@ import mmm.asia.rmonebuy.ui.fragment.DFragment;
 import mmm.asia.rmonebuy.ui.view.bottombar.BottomBar;
 import mmm.asia.rmonebuy.ui.view.bottombar.BottomBarTab;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private BottomBar bottomBar;
@@ -51,12 +55,28 @@ public class MainActivity extends AppCompatActivity {
         bottomBar = (BottomBar) findViewById(R.id.bottom_bar);
 
         initView();
+
+        initCloud();
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
+    }
+
+    private void initCloud() {
+        PushService.setDefaultPushCallback(this, MainActivity.class);
+
+        //打开对应的界面
+        PushService.subscribe(this, "public", MainActivity.class);
+
+        AVInstallation.getCurrentInstallation().saveInBackground(new SaveCallback() {
+            @Override
+            public void done(AVException e) {
+                AVInstallation.getCurrentInstallation().saveInBackground();
+            }
+        });
     }
 
     private void testCloud() {

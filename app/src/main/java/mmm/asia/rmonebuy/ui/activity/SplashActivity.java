@@ -10,12 +10,13 @@ import android.view.KeyEvent;
 import android.view.WindowManager;
 
 import mmm.asia.rmonebuy.R;
+import mmm.asia.rmonebuy.base.BaseActivity;
 
 /**
  * Created by asia on 25/11/2016.
  */
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
     private static final String TAG = SplashActivity.class.getSimpleName();
 
     @Override
@@ -31,8 +32,8 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                SplashActivity.this.finish();
+                startActivity(MainActivity.class);
+                finish();
             }
         }, 1000);
     }
