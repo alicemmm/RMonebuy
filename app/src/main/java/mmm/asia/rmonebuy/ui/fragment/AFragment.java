@@ -4,14 +4,24 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
 import android.widget.TextView;
+
+import java.util.List;
 
 import mmm.asia.rmonebuy.R;
 import mmm.asia.rmonebuy.base.BaseFragment;
+import mmm.asia.rmonebuy.ui.view.StickyViewPager;
 
 public class AFragment extends BaseFragment {
     public static final String TAG = AFragment.class.getSimpleName();
@@ -21,6 +31,9 @@ public class AFragment extends BaseFragment {
     private SwipeRefreshLayout swipeRefreshLayout;
 
     private boolean isRefresh = false;
+
+    private StickyViewPager bottomViewPager;
+    private TabLayout bottomTabLayout;
 
     public AFragment() {
     }
@@ -49,6 +62,8 @@ public class AFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_a, container, false);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        bottomViewPager = (StickyViewPager) view.findViewById(R.id.bottom_viewpager);
+        bottomTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
 
         initView();
 
@@ -74,8 +89,44 @@ public class AFragment extends BaseFragment {
                             swipeRefreshLayout.setRefreshing(false);
                             isRefresh = false;
                         }
-                    }, 4000);
+                    }, 2000);
                 }
+            }
+        });
+
+
+        bottomViewPager.setAdapter(new SubPageAdapter(getChildFragmentManager()));
+        bottomViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        bottomTabLayout.setupWithViewPager(bottomViewPager);
+        bottomTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(bottomViewPager) {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                bottomViewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
 
@@ -94,5 +145,27 @@ public class AFragment extends BaseFragment {
     @Override
     public void onViewDisappear() {
         super.onViewDisappear();
+    }
+
+    private static class SubPageAdapter extends FragmentPagerAdapter {
+
+        public SubPageAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return BFragment.getInstance("item=" + position);
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "title" + position;
+        }
     }
 }

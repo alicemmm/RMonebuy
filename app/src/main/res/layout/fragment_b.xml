@@ -5,11 +5,56 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="100dip"
+        android:background="#ffffff00" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="100dip"
+        android:background="#ffaaff33" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="100dip"
+        android:background="#ffffff00" />
+
     <TextView
         android:id="@+id/fragment_b_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"
         android:textSize="14sp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="100dip"
+        android:background="#ffffff00" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="100dip"
+        android:background="#ffaaff33" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="100dip"
+        android:background="#ffffff00" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="100dip"
+        android:background="#ffaaff33" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="100dip"
+        android:background="#ffffff00" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="100dip"
+        android:background="#ffaaff33" />
 
 </LinearLayout>

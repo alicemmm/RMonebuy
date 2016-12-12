@@ -20,7 +20,7 @@ import mmm.asia.rmonebuy.R;
  * Created by asia on 09/12/2016.
  */
 
-public class StickyScrollView extends NestedScrollView {
+public class StickyScrollView extends FitNestedScrollView {
     /**
      * Tag for views that should stick and have constant drawing. e.g. TextViews, ImageViews etc
      */
@@ -49,8 +49,8 @@ public class StickyScrollView extends NestedScrollView {
     private boolean clippingToPadding;
     private boolean clipToPaddingHasBeenSet;
 
-    private int mShadowHeight;
-    private Drawable mShadowDrawable;
+    private int shadowHeight;
+    private Drawable shadowDrawable;
 
     private final Runnable invalidateRunnable = new Runnable() {
 
@@ -86,7 +86,7 @@ public class StickyScrollView extends NestedScrollView {
         final float density = context.getResources().getDisplayMetrics().density;
         int defaultShadowHeightInPix = (int) (DEFAULT_SHADOW_HEIGHT * density + 0.5f);
 
-        mShadowHeight = a.getDimensionPixelSize(
+        shadowHeight = a.getDimensionPixelSize(
                 R.styleable.StickyScrollView_stuckShadowHeight,
                 defaultShadowHeightInPix);
 
@@ -94,12 +94,11 @@ public class StickyScrollView extends NestedScrollView {
                 R.styleable.StickyScrollView_stuckShadowDrawable, -1);
 
         if (shadowDrawableRes != -1) {
-            mShadowDrawable = context.getResources().getDrawable(
+            shadowDrawable = context.getResources().getDrawable(
                     shadowDrawableRes);
         }
 
         a.recycle();
-
     }
 
     /**
@@ -108,7 +107,7 @@ public class StickyScrollView extends NestedScrollView {
      * @param height
      */
     public void setShadowHeight(int height) {
-        mShadowHeight = height;
+        shadowHeight = height;
     }
 
 
@@ -207,15 +206,15 @@ public class StickyScrollView extends NestedScrollView {
 
             canvas.clipRect(0, (clippingToPadding ? -stickyViewTopOffset : 0),
                     getWidth() - stickyViewLeftOffset,
-                    currentlyStickingView.getHeight() + mShadowHeight + 1);
+                    currentlyStickingView.getHeight() + shadowHeight + 1);
 
-            if (mShadowDrawable != null) {
+            if (shadowDrawable != null) {
                 int left = 0;
                 int right = currentlyStickingView.getWidth();
                 int top = currentlyStickingView.getHeight();
-                int bottom = currentlyStickingView.getHeight() + mShadowHeight;
-                mShadowDrawable.setBounds(left, top, right, bottom);
-                mShadowDrawable.draw(canvas);
+                int bottom = currentlyStickingView.getHeight() + shadowHeight;
+                shadowDrawable.setBounds(left, top, right, bottom);
+                shadowDrawable.draw(canvas);
             }
 
             canvas.clipRect(0, (clippingToPadding ? -stickyViewTopOffset : 0), getWidth(), currentlyStickingView.getHeight());
