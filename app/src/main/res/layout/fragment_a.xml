@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <mmm.asia.rmonebuy.ui.view.StickyScrollView
-            android:id="@+id/ScrollView"
+            android:id="@+id/sticky_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             whatever:stuckShadowDrawable="@drawable/sticky_shadow_default">
@@ -40,14 +40,14 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#99ff00ff"
+                    android:background="@color/bg_btn"
                     android:tag="sticky-nonconstant-hastransparancy">
 
                     <android.support.design.widget.TabLayout
                         android:id="@+id/tab_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="?attr/colorPrimary"
+                        android:background="@color/window_background"
                         app:tabMode="scrollable" />
 
                 </FrameLayout>

@@ -5,13 +5,13 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v4.widget.NestedScrollView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import mmm.asia.rmonebuy.R;
@@ -63,7 +63,8 @@ public class StickyScrollView extends FitNestedScrollView {
                 int b = (int) (getScrollY() + (currentlyStickingView.getHeight() + stickyViewTopOffset));
                 invalidate(l, t, r, b);
             }
-            postDelayed(this, 16);
+
+            postDelayed(this, 200);
         }
     };
 
@@ -78,7 +79,6 @@ public class StickyScrollView extends FitNestedScrollView {
     public StickyScrollView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         setup();
-
 
         TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.StickyScrollView, defStyle, 0);
@@ -112,7 +112,7 @@ public class StickyScrollView extends FitNestedScrollView {
 
 
     public void setup() {
-        stickyViews = new ArrayList<View>();
+        stickyViews = new ArrayList<>();
     }
 
     private int getLeftForViewRelativeOnlyChild(View v) {
