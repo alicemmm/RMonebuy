@@ -1,5 +1,6 @@
 package mmm.asia.rmonebuy.ui.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ public class DFragment extends BaseFragment {
     public static final String TAG = DFragment.class.getSimpleName();
 
     private String argument;
+    private Context context;
 
     public DFragment() {
     }
@@ -31,6 +33,8 @@ public class DFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = getActivity();
+
         Bundle bundle = getArguments();
         if (bundle != null) {
             argument = bundle.getString("argument", "");

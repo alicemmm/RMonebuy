@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import mmm.asia.rmonebuy.R;

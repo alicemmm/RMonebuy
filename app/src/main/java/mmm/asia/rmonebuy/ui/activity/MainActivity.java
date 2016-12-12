@@ -101,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
 
                 ft.show(mFragments[position]);
                 ft.commitAllowingStateLoss();
+
+
             }
 
             @Override

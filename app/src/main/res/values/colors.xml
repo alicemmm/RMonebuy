@@ -34,6 +34,8 @@
 
     <!--line-->
 
+    <color name="default_transparent_color">#99f2f2f2</color>
+    
     <color name="default_bg_color">#f2f2f2</color>
     <color name="red">#ff0000</color>
 
