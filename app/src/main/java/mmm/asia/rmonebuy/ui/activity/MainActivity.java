@@ -9,12 +9,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVInstallation;
-import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.PushService;
-import com.avos.avoscloud.SaveCallback;
-
 import mmm.asia.rmonebuy.R;
 import mmm.asia.rmonebuy.base.BaseActivity;
 import mmm.asia.rmonebuy.ui.fragment.AFragment;
@@ -55,34 +49,12 @@ public class MainActivity extends BaseActivity {
         bottomBar = (BottomBar) findViewById(R.id.bottom_bar);
 
         initView();
-
-        initCloud();
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
-    }
-
-    private void initCloud() {
-        PushService.setDefaultPushCallback(this, MainActivity.class);
-
-        //打开对应的界面
-        PushService.subscribe(this, "public", MainActivity.class);
-
-        AVInstallation.getCurrentInstallation().saveInBackground(new SaveCallback() {
-            @Override
-            public void done(AVException e) {
-                AVInstallation.getCurrentInstallation().saveInBackground();
-            }
-        });
-    }
-
-    private void testCloud() {
-        AVObject testObject = new AVObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
     }
 
     private void initView() {
@@ -121,8 +93,6 @@ public class MainActivity extends BaseActivity {
 
                 ft.show(mFragments[position]);
                 ft.commitAllowingStateLoss();
-
-
             }
 
             @Override
@@ -134,8 +104,14 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-//        bottomBar.getItem(3).setUnreadCount(8);
+    }
 
+    public void setItemUnreadCount(int index, int count) {
+        if (index < 0 || index > 3) {
+            return;
+        }
+
+        bottomBar.getItem(index).setUnreadCount(count);
     }
 
     @Override

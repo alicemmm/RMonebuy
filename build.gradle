@@ -3,11 +3,6 @@
 buildscript {
     repositories {
         jcenter()
-
-        //leanCloud
-        maven {
-            url "http://mvn.leancloud.cn/nexus/content/repositories/public"
-        }
     }
 
     dependencies {
@@ -21,10 +16,8 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        //leanCloud
-        maven {
-            url "http://mvn.leancloud.cn/nexus/content/repositories/public"
-        }
+        //Bmob的maven仓库地址--必填
+        maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
     }
 }
 

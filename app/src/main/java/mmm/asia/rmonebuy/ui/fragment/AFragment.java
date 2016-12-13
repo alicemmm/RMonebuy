@@ -24,6 +24,7 @@ import java.util.List;
 
 import mmm.asia.rmonebuy.R;
 import mmm.asia.rmonebuy.base.BaseFragment;
+import mmm.asia.rmonebuy.ui.activity.MainActivity;
 import mmm.asia.rmonebuy.ui.view.StickyScrollView;
 import mmm.asia.rmonebuy.ui.view.StickyViewPager;
 
