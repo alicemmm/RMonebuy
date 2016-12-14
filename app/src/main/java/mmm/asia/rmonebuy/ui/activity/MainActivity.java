@@ -77,10 +77,10 @@ public class MainActivity extends BaseActivity {
 
         transaction.commitAllowingStateLoss();
 
-        bottomBar.addItem(new BottomBarTab(this, R.drawable.ic_home_black_24dp, getString(R.string.main_activity_tab_a)))
+        bottomBar.addItem(new BottomBarTab(this, R.drawable.ic_store_black_24dp, getString(R.string.main_activity_tab_a)))
                 .addItem(new BottomBarTab(this, R.drawable.ic_redeem_black_24dp, getString(R.string.main_activity_tab_b)))
-                .addItem(new BottomBarTab(this, R.drawable.ic_favorite_black_24dp, getString(R.string.main_activity_tab_c)))
-                .addItem(new BottomBarTab(this, R.drawable.ic_person_black_24dp, getString(R.string.main_activity_tab_d)));
+                .addItem(new BottomBarTab(this, R.drawable.ic_favorite_border_black_24dp, getString(R.string.main_activity_tab_c)))
+                .addItem(new BottomBarTab(this, R.drawable.ic_perm_identity_black_24dp, getString(R.string.main_activity_tab_d)));
 
         bottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override
