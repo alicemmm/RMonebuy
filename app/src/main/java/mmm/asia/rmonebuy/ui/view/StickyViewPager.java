@@ -71,6 +71,7 @@ public class StickyViewPager extends ViewPager {
                 result = Math.min(result, specSize);
             }
         }
+
         return result;
     }
 }

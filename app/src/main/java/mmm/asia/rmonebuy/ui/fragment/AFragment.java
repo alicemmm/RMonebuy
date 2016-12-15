@@ -175,7 +175,7 @@ public class AFragment extends BaseFragment {
 
         @Override
         public Fragment getItem(int position) {
-            return BFragment.getInstance("item=" + position);
+            return AFItemFragment.getInstance("item=" + position);
         }
 
         @Override

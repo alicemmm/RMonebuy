@@ -53,7 +53,7 @@
                 <mmm.asia.rmonebuy.ui.view.StickyViewPager
                     android:id="@+id/bottom_viewpager"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
