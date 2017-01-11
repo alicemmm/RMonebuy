@@ -37,6 +37,12 @@
             android:configChanges="screenSize|orientation|keyboardHidden"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name="cn.bmob.v3.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data android:name="BMOB_CHANNEL" android:value="bmob"/>
+
     </application>
 
 </manifest>
