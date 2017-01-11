@@ -3,6 +3,7 @@ package mmm.asia.rmonebuy.bean;
 import java.util.List;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by asia on 07/01/2017.
@@ -14,7 +15,7 @@ public class Product extends BmobObject {
     private Float price;
     private String title;
     private String subTitle;
-    private List<String> picList;
+    private List<BmobFile> picList;
     private String introduce;
     private String couponUrl;
     private String buyUrl;
@@ -60,11 +61,11 @@ public class Product extends BmobObject {
         this.subTitle = subTitle;
     }
 
-    public List<String> getPicList() {
+    public List<BmobFile> getPicList() {
         return picList;
     }
 
-    public void setPicList(List<String> picList) {
+    public void setPicList(List<BmobFile> picList) {
         this.picList = picList;
     }
 
