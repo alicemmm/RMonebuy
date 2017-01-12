@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,8 @@ import android.view.ViewGroup;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import cn.bmob.v3.AsyncCustomEndpoints;
 import cn.bmob.v3.datatype.BmobFile;
@@ -24,7 +25,7 @@ import cn.bmob.v3.listener.CloudCodeListener;
 import cn.bmob.v3.listener.SaveListener;
 import mmm.asia.rmonebuy.R;
 import mmm.asia.rmonebuy.base.BaseFragment;
-import mmm.asia.rmonebuy.bean.TestProduct;
+import mmm.asia.rmonebuy.bean.ProductDigest;
 
 public class AFragment extends BaseFragment {
     public static final String TAG = AFragment.class.getSimpleName();
@@ -33,6 +34,7 @@ public class AFragment extends BaseFragment {
     private String argument;
 
     private SwipeRefreshLayout swipeRefreshLayout;
+    private RecyclerView recyclerView;
 
     private boolean isRefresh = false;
 
@@ -64,7 +66,7 @@ public class AFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_a, container, false);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
-
+        recyclerView = (RecyclerView) view.findViewById(R.id.fragment_a_recycle_view);
         initView();
 
         return view;
@@ -94,24 +96,28 @@ public class AFragment extends BaseFragment {
             }
         });
 
-
-//        testCloudMethod();
-
         testNoSql();
     }
 
-    private void testNoSql(){
-        TestProduct testProduct = new TestProduct();
-        testProduct.setId(10001);
-        testProduct.setPrice(5.5f);
+    private void testNoSql() {
+        ProductDigest testProduct = new ProductDigest();
+        testProduct.setProductId(10001);
+        testProduct.setPrice("5.5");
         testProduct.setTitle("西瓜");
-        testProduct.setType(1);
-        List<BmobFile> urls = new ArrayList<>();
-        urls.add(new BmobFile());
-        urls.add(new BmobFile());
-        urls.add(new BmobFile());
-        urls.add(new BmobFile());
-        testProduct.setPicFiles(urls);
+        testProduct.setSubTitle("我是西瓜");
+        testProduct.setIntroduce("我就是西瓜的描述");
+        testProduct.setTypeContent("国内");
+        testProduct.setProductType("水果");
+        testProduct.setFromMarket("淘宝");
+        testProduct.setCanBuyPoint("98%");
+        testProduct.setCouponUrl("couponUrl");
+        testProduct.setBuyUrl("buyUrl");
+        testProduct.setQuickBuy("quick buy");
+        testProduct.setSlidePicOne(BmobFile.createEmptyFile());
+        testProduct.setSlidePicTwo(BmobFile.createEmptyFile());
+        testProduct.setReserved("预留的");
+
+        testProduct.setIcon(BmobFile.createEmptyFile());
 
         testProduct.save(new SaveListener<String>() {
             @Override
@@ -121,6 +127,13 @@ public class AFragment extends BaseFragment {
         });
     }
 
+
+    public static String getStringDate() {
+        Date currentTime = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(currentTime);
+        return dateString;
+    }
 
 
     private void testCloudMethod() {

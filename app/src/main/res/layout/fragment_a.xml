@@ -10,33 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <mmm.asia.rmonebuy.ui.view.FitNestedScrollView
-            android:id="@+id/sticky_scroll_view"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_a_recycle_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <android.support.v4.view.ViewPager
-                    android:layout_width="match_parent"
-                    android:layout_height="128dp" />
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="100dip"
-                    android:background="#ffffff00" />
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="100dip"
-                    android:background="#ffaaff33" />
-
-            </LinearLayout>
-
-        </mmm.asia.rmonebuy.ui.view.FitNestedScrollView>
+            android:layout_height="wrap_content" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
