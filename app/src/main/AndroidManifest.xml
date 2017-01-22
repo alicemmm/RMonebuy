@@ -37,6 +37,8 @@
             android:configChanges="screenSize|orientation|keyboardHidden"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".ui.activity.FrameActivity"/>
+
         <activity
             android:name="cn.bmob.v3.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
