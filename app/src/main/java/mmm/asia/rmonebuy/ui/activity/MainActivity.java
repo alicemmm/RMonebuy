@@ -14,7 +14,7 @@ import mmm.asia.rmonebuy.base.BaseActivity;
 import mmm.asia.rmonebuy.ui.fragment.AFragment;
 import mmm.asia.rmonebuy.ui.fragment.BFragment;
 import mmm.asia.rmonebuy.ui.fragment.CFragment;
-import mmm.asia.rmonebuy.ui.fragment.DFragment;
+import mmm.asia.rmonebuy.ui.fragment.MyFragment;
 import mmm.asia.rmonebuy.ui.view.bottombar.BottomBar;
 import mmm.asia.rmonebuy.ui.view.bottombar.BottomBarTab;
 
@@ -29,7 +29,7 @@ public class MainActivity extends BaseActivity {
     private AFragment fragmentA;
     private BFragment fragmentB;
     private CFragment fragmentC;
-    private DFragment fragmentD;
+    private MyFragment fragmentD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
             fragmentA = (AFragment) fragmentManager.findFragmentByTag("tab0");
             fragmentB = (BFragment) fragmentManager.findFragmentByTag("tab1");
             fragmentC = (CFragment) fragmentManager.findFragmentByTag("tab2");
-            fragmentD = (DFragment) fragmentManager.findFragmentByTag("tab3");
+            fragmentD = (MyFragment) fragmentManager.findFragmentByTag("tab3");
         }
 
         setContentView(R.layout.activity_main);
@@ -61,7 +61,7 @@ public class MainActivity extends BaseActivity {
         fragmentA = AFragment.getInstance("0");
         fragmentB = BFragment.getInstance("1");
         fragmentC = CFragment.getInstance("2");
-        fragmentD = DFragment.getInstance("3");
+        fragmentD = MyFragment.getInstance("3");
 
         mFragments = new Fragment[]{fragmentA, fragmentB, fragmentC, fragmentD};
 

@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import mmm.asia.rmonebuy.ui.fragment.AFragment;
 import mmm.asia.rmonebuy.ui.fragment.BFragment;
 import mmm.asia.rmonebuy.ui.fragment.CFragment;
-import mmm.asia.rmonebuy.ui.fragment.DFragment;
+import mmm.asia.rmonebuy.ui.fragment.MyFragment;
 
 /**
  * Created by asia on 24/11/2016.
@@ -32,7 +32,7 @@ public class MainFragmentAdapter extends FragmentPagerAdapter {
             case 2:
                 return CFragment.getInstance(position + "");
             case 3:
-                return DFragment.getInstance(position + "");
+                return MyFragment.getInstance(position + "");
             default:
                 return null;
         }

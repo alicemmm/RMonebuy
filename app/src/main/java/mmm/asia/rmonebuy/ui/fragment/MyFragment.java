@@ -6,22 +6,21 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import mmm.asia.rmonebuy.R;
 import mmm.asia.rmonebuy.base.BaseFragment;
 
-public class DFragment extends BaseFragment {
-    public static final String TAG = DFragment.class.getSimpleName();
+public class MyFragment extends BaseFragment {
+    public static final String TAG = MyFragment.class.getSimpleName();
 
     private String argument;
     private Context context;
 
-    public DFragment() {
+    public MyFragment() {
     }
 
-    public static DFragment getInstance(String argument) {
-        DFragment fragment = new DFragment();
+    public static MyFragment getInstance(String argument) {
+        MyFragment fragment = new MyFragment();
 
         Bundle args = new Bundle();
         args.putString("argument", argument);
